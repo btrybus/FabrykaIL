@@ -1,0 +1,64 @@
+@model IEnumerable<FabrykaIL.Models.Maszyna>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form class="navbar-form" role="search" style="width: 30%;">
+    <div class="input-group">
+        <input type="text" class="form-control" name="search" id="search">
+        <div class="input-group-btn">
+            <button class="btn btn-default" type="submit" aria-label="Szukaj">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataUruchomienia)
+            </th>
+      
+            <th>
+                @Html.DisplayNameFor(model => model.Hala)
+            </th>
+        
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Nazwa)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.DataUruchomienia)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.HalaId)
+            </td>
+   
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
